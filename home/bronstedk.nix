@@ -6,13 +6,6 @@ nixpkgs.config.allowUnfree = true;
   home.stateVersion = "25.05";
   
   home.packages = [
-	pkgs.ripgrep
-	pkgs.raycast
-        pkgs.wezterm
-        pkgs.fzf
-	pkgs.bat
-        pkgs.eza
-	pkgs.neovim
 	pkgs.bitwarden
   ];
 

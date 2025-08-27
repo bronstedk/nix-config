@@ -10,9 +10,14 @@
 	nixpkgs.config.allowUnfree = true;
 
 	environment.pathsToLink = [ "/share/zsh" ];
-      environment.systemPackages =
-        [ 
-        ];
+       environment.systemPackages = let
+		raw = import ../shared/packages.nix;
+		real = raw { inherit pkgs; };
+       in
+         [ 
+		 pkgs.raycast
+		 pkgs.mkalias
+         ] ++ real;
 
         fonts.packages = [pkgs.nerd-fonts.fira-code];
 

@@ -3,7 +3,10 @@
 
 	homebrew = {
 		enable = true;
-		casks = [ "vivaldi" ];
+		casks = [ 
+			"vivaldi" 
+			# "logi-options+"
+		];
 		brews = [ "mas" ];
 		masApps = {
 # "app_name" = "#app_id";
