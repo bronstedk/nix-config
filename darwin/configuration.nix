@@ -1,9 +1,10 @@
 { pkgs, self, ... }: {
     
       # specialArgs = { inherit inputs; };
-#      imports = [
-#      <home-manager/nix-darwin>
-#      ];
+      imports = [
+		./modules/homebrew.nix
+		./modules/system.nix
+      ];
 
       # List packages installed in system profile. To search by name, run:
 nixpkgs.config.allowUnfree = true;

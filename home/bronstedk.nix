@@ -23,6 +23,7 @@ nixpkgs.config.allowUnfree = true;
 ../shared/modules/nvim.nix
 ../shared/modules/zsh.nix
 ../shared/modules/jj.nix
+../shared/modules/gh.nix
 ../secrets/gpg.nix
 ../darwin/modules/aerospace.nix
   ];
