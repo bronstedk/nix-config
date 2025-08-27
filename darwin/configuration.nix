@@ -7,7 +7,9 @@
       ];
 
       # List packages installed in system profile. To search by name, run:
-nixpkgs.config.allowUnfree = true;
+	nixpkgs.config.allowUnfree = true;
+
+	environment.pathsToLink = [ "/share/zsh" ];
       environment.systemPackages =
         [ 
         ];

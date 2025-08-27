@@ -10,6 +10,7 @@ nixpkgs.config.allowUnfree = true;
 	pkgs.raycast
         pkgs.wezterm
         pkgs.fzf
+	pkgs.bat
         pkgs.eza
 	pkgs.neovim
 	pkgs.bitwarden
@@ -20,12 +21,14 @@ nixpkgs.config.allowUnfree = true;
   };
 
   imports = [
-../shared/modules/nvim.nix
-../shared/modules/zsh.nix
-../shared/modules/jj.nix
-../shared/modules/gh.nix
-../secrets/gpg.nix
-../darwin/modules/aerospace.nix
+	../shared/modules/nvim.nix
+	../shared/modules/zsh.nix
+	../shared/modules/oh-my-posh.nix
+	../shared/modules/wezterm.nix
+	../shared/modules/jj.nix
+	../shared/modules/gh.nix
+	../secrets/gpg.nix
+	../darwin/modules/aerospace.nix
   ];
 
   programs.atuin = {
