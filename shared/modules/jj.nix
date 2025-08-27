@@ -5,7 +5,7 @@
 in{
 	programs.jujutsu = {
 		enable = true;
-		ediff = config.programs.nvf.enable;
+		ediff = config.programs.neovim.enable;
 
 		settings = {
 			inherit user;

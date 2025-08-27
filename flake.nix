@@ -14,11 +14,14 @@
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
 
-
-    nvf.url = "github:notashelf/nvf";
+	nixvim = {
+		url = "github:nix-community/nixvim/nixos-25.05";		
+		inputs.nixpkgs.follows = "nixpkgs";
+              };
+              flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, nvf, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, nixvim, ... }:
   {
     darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
     specialArgs = { inherit self; };
@@ -35,7 +38,12 @@ nix-homebrew.darwinModules.nix-homebrew
           }
                                          home-manager.darwinModules.home-manager {
  home-manager.useUserPackages = true;
- home-manager.users.bronstedk = {pkgs, ...}: {imports = [ nvf.homeManagerModules.default ./home/bronstedk.nix ]; };
+ home-manager.users.bronstedk = {pkgs, ...}: {
+ imports = [ 
+ nixvim.homeModules.nixvim
+ ./home/bronstedk.nix 
+ ]; 
+ };
                                          }
 
       ];
