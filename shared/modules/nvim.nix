@@ -1,23 +1,20 @@
-{ pkgs, lib, ... }: {
-	programs.nixvim = {
-          enable = true;
+{pkgs, ...}: {
+  programs.nixvim = {
+    enable = true;
 
-          imports = [
-            ./nvim/options.nix
-            ./nvim/keymaps.nix
-            ./nvim/autocmds.nix
-            ./nvim/diagnostic.nix
-            ./nvim/plugins/kickstart/gitsigns.nix
-          ];
+    imports = [
+      ./nvim
+    ];
 
-		colorschemes.catppuccin.enable = true;
-                plugins = {
-                  lualine.enable = true;
-                  guess-indent.enable = true;
-                };
+    colorschemes.catppuccin.enable = true;
+    plugins = {
+      lualine.enable = true;
+      guess-indent.enable = true;
+      web-devicons.enable = true;
+    };
 
-		extraPlugins = with pkgs.vimPlugins; [
-			vim-nix
-		];
-	};
+    extraPlugins = with pkgs.vimPlugins; [
+      vim-nix
+    ];
+  };
 }

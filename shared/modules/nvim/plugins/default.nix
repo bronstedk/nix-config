@@ -1,0 +1,6 @@
+{...}: {
+  imports = [
+    ./kickstart
+    ./custom
+  ];
+}
