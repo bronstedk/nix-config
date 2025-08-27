@@ -20,7 +20,7 @@
 
           signcolumn = "yes";
 
-          update_time = 250;
+          updatetime = 250;
 
           timeoutlen = 300;
 
