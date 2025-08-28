@@ -10,5 +10,6 @@
     ./lsp.nix
     ./mini.nix
     ./todo-comments.nix
+    ./lint.nix
   ];
 }

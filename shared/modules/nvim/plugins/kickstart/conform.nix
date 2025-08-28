@@ -37,7 +37,7 @@
         nix = ["alejandra" "nixpkgs_fmt"];
         json = ["fixjson"];
         zig = ["zigfmt"];
-        "['_']" = ["codespell" "trim_whitespace"];
+        "*" = ["codespell" "trim_whitespace"];
       };
     };
   };
