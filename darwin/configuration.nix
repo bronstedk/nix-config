@@ -6,7 +6,7 @@
   # specialArgs = { inherit inputs; };
   imports = [
     ./modules/homebrew.nix
-    ./modules/aerospace.nix
+    ./modules/aerospace
     ./modules/system.nix
   ];
 
@@ -20,7 +20,6 @@
   in
     [
       pkgs.raycast
-      pkgs.sketchybar
       pkgs.mkalias
     ]
     ++ real;

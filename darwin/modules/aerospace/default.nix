@@ -1,12 +1,20 @@
 {...}: {
+  imports = [
+    ./sketchybar
+  ];
+
+  services.jankyborders = {
+    enable = true;
+
+    active_color = "0xFFE7C664";
+    inactive_color = "transparent";
+    width = 10.0;
+  };
+
   services.aerospace = {
     enable = true;
 
     settings = {
-      after-startup-command = [
-        "exec-and-forget sketchybar"
-        "exec-and-forget borders active_color=0xFFE7C664 width=10.0"
-      ];
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
 
@@ -32,7 +40,7 @@
           left = 5;
           right = 5;
           bottom = 5;
-          top = [{monitor."Built-in Retina Display" = 13;} 13];
+          top = [{monitor."Built-in Retina Display" = 70;} 13];
         };
       };
 
@@ -97,8 +105,6 @@
 
           alt-shift-c = [
             "reload-config"
-            "exec-and-forget killall sketchybar && sketchybar"
-            "exec-and-forget killall borders && borders active_color=0xFFE7C664 width=10.0"
           ];
 
           alt-r = [
