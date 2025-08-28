@@ -1,161 +1,162 @@
-{ ... }: {
-	programs.aerospace = {
-		enable = true;
-		userSettings = {
-			after-startup-command = [ 
-				"exec-and-forget sketchybar"
-				"exec-and-forget borders active_color=0xFFE7C664 width=10.0"
-			];
-			enable-normalization-flatten-containers = true;
-			enable-normalization-opposite-orientation-for-nested-containers = true;
+{...}: {
+  services.aerospace = {
+    enable = true;
 
-			default-root-container-layout = "tiles";
-			default-root-container-orientation = "auto";
+    settings = {
+      after-startup-command = [
+        "exec-and-forget sketchybar"
+        "exec-and-forget borders active_color=0xFFE7C664 width=10.0"
+      ];
+      enable-normalization-flatten-containers = true;
+      enable-normalization-opposite-orientation-for-nested-containers = true;
 
-			on-focused-monitor-changed = [ "move-mouse monitor-lazy-center" ];
-			exec-on-workspace-change = [ 
-				"/bin/bash"
-				"-c"
-				"sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE"
-			];
+      default-root-container-layout = "tiles";
+      default-root-container-orientation = "auto";
 
-			automatically-unhide-macos-hidden-apps = false;
+      on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
+      exec-on-workspace-change = [
+        "/bin/bash"
+        "-c"
+        "sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE"
+      ];
 
-			gaps = {
-				inner = {
-					horizontal = 5;
-					vertical = 5;
-				};
+      automatically-unhide-macos-hidden-apps = false;
 
-				outer = {
-					left = 5;
-					right = 5;
-					bottom = 5;
-					top = [ { monitor."Built-in Retina Display" = 13; } 13 ];
-				};
-			};
+      gaps = {
+        inner = {
+          horizontal = 5;
+          vertical = 5;
+        };
 
-			workspace-to-monitor-force-assignment = {
-				"1" = ["KA242Y E" "secondary"];
-			};
+        outer = {
+          left = 5;
+          right = 5;
+          bottom = 5;
+          top = [{monitor."Built-in Retina Display" = 13;} 13];
+        };
+      };
 
-			on-window-detected = [
-				{
-					"if".app-id = "com.apple.systempreferences";
-					run = [ "layout tiling" ];
-				}
-			];
+      workspace-to-monitor-force-assignment = {
+        "1" = ["KA242Y E" "secondary"];
+      };
 
-			mode = {
-				main.binding = {
-					alt-j = "focus down";
-					alt-k = "focus up";
-					alt-l = "focus right";
-					alt-h = "focus left";
+      on-window-detected = [
+        {
+          "if".app-id = "com.apple.systempreferences";
+          run = ["layout tiling"];
+        }
+      ];
 
-					alt-shift-j = "move down";
-					alt-shift-k = "move up";
-					alt-shift-l = "move right";
-					alt-shift-h = "move left";
+      mode = {
+        main.binding = {
+          alt-j = "focus down";
+          alt-k = "focus up";
+          alt-l = "focus right";
+          alt-h = "focus left";
 
-					alt-semicolon = "join-with right";
-					alt-v = "join-with down";
-					
-					alt-f = "fullscreen";
+          alt-shift-j = "move down";
+          alt-shift-k = "move up";
+          alt-shift-l = "move right";
+          alt-shift-h = "move left";
 
-					alt-s = "layout v_accordion";
-					alt-w = "layout h_accordion";
-					alt-e = "layout tiles horizontal vertical";
+          alt-semicolon = "join-with right";
+          alt-v = "join-with down";
 
-					alt-shift-space = "layout floating tiling";
+          alt-f = "fullscreen";
 
-					alt-1 = "workspace 1";
-					alt-2 = "workspace 2";
-					alt-3 = "workspace 3";
+          alt-s = "layout v_accordion";
+          alt-w = "layout h_accordion";
+          alt-e = "layout tiles horizontal vertical";
 
-					alt-shift-1 = [
-					    "move-node-to-workspace 1"
-					    "exec-and-forget sketchybar --trigger workspace_move PREV_WORKSPACE=1"
-					];
-					alt-shift-2 = [
-					    "move-node-to-workspace 2"
-					    "exec-and-forget sketchybar --trigger workspace_move PREV_WORKSPACE=2"
-					];
-					alt-shift-3 = [
-					    "move-node-to-workspace 3"
-					    "exec-and-forget sketchybar --trigger workspace_move PREV_WORKSPACE=3"
-					];
+          alt-shift-space = "layout floating tiling";
 
-					alt-tab = "workspace-back-and-forth";
-					alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
+          alt-1 = "workspace 1";
+          alt-2 = "workspace 2";
+          alt-3 = "workspace 3";
 
-					alt-shift-semicolon = [
-					    "mode service"
-					    "exec-and-forget sketchybar --trigger change_mode MODE=service"
-					];
+          alt-shift-1 = [
+            "move-node-to-workspace 1"
+            "exec-and-forget sketchybar --trigger workspace_move PREV_WORKSPACE=1"
+          ];
+          alt-shift-2 = [
+            "move-node-to-workspace 2"
+            "exec-and-forget sketchybar --trigger workspace_move PREV_WORKSPACE=2"
+          ];
+          alt-shift-3 = [
+            "move-node-to-workspace 3"
+            "exec-and-forget sketchybar --trigger workspace_move PREV_WORKSPACE=3"
+          ];
 
-					alt-shift-c = [
-					    "reload-config"
-					    "exec-and-forget killall sketchybar && sketchybar"
-					    "exec-and-forget killall borders && borders active_color=0xFFE7C664 width=10.0"
-					];
+          alt-tab = "workspace-back-and-forth";
+          alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
 
-					alt-r = [
-					    "mode resize"
-					    "exec-and-forget sketchybar --trigger change_mode MODE=resize"
-					];
-				};
+          alt-shift-semicolon = [
+            "mode service"
+            "exec-and-forget sketchybar --trigger change_mode MODE=service"
+          ];
 
-				resize.binding = {
-							h = "resize width -50";
-							j = "resize height +50";
-							k = "resize height -50";
-							l = "resize width +50";
-							b = [
-    								"balance-sizes"
-    								"mode main"
-    								"exec-and-forget sketchybar --trigger change_mode MODE=main"
-							];
+          alt-shift-c = [
+            "reload-config"
+            "exec-and-forget killall sketchybar && sketchybar"
+            "exec-and-forget killall borders && borders active_color=0xFFE7C664 width=10.0"
+          ];
 
-							enter = [
-    								"mode main"
-    								"exec-and-forget sketchybar --trigger change_mode MODE=main"
-							];
-				};
+          alt-r = [
+            "mode resize"
+            "exec-and-forget sketchybar --trigger change_mode MODE=resize"
+          ];
+        };
 
-				service.binding = {
-					enter = [
-					    "mode main"
-					    "exec-and-forget sketchybar --trigger change_mode MODE=main"
-					];
-					r = [
-					    "flatten-workspace-tree"
-					    "mode main"
-					    "exec-and-forget sketchybar --trigger change_mode MODE=main"
-					];
+        resize.binding = {
+          h = "resize width -50";
+          j = "resize height +50";
+          k = "resize height -50";
+          l = "resize width +50";
+          b = [
+            "balance-sizes"
+            "mode main"
+            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+          ];
 
-					alt-shift-h = [
-					    "join-with left"
-					    "mode main"
-					    "exec-and-forget sketchybar --trigger change_mode MODE=main"
-					];
-					alt-shift-j = [
-					    "join-with down"
-					    "mode main"
-					    "exec-and-forget sketchybar --trigger change_mode MODE=main"
-					];
-					alt-shift-k = [
-					    "join-with up"
-					    "mode main"
-					   "exec-and-forget sketchybar --trigger change_mode MODE=main"
-					];
-					alt-shift-l = [
-					    "join-with right"
-					    "mode main"
-					    "exec-and-forget sketchybar --trigger change_mode MODE=main"
-					];
-				};
-			};
-		};
-	};
+          enter = [
+            "mode main"
+            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+          ];
+        };
+
+        service.binding = {
+          enter = [
+            "mode main"
+            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+          ];
+          r = [
+            "flatten-workspace-tree"
+            "mode main"
+            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+          ];
+
+          alt-shift-h = [
+            "join-with left"
+            "mode main"
+            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+          ];
+          alt-shift-j = [
+            "join-with down"
+            "mode main"
+            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+          ];
+          alt-shift-k = [
+            "join-with up"
+            "mode main"
+            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+          ];
+          alt-shift-l = [
+            "join-with right"
+            "mode main"
+            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+          ];
+        };
+      };
+    };
+  };
 }

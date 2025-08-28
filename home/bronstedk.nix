@@ -10,10 +10,18 @@
 
   home.packages = [
     pkgs.bitwarden
+    pkgs.lua
   ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
+  };
+
+  home.file = lib.optionalAttrs pkgs.stdenv.isDarwin {
+    ".config/sketchybar" = {
+      source = ../external/sketchybar;
+      recursive = true;
+    };
   };
 
   imports = [
@@ -25,7 +33,6 @@
     ../shared/modules/jj.nix
     ../shared/modules/gh.nix
     ../secrets/gpg.nix
-    ../darwin/modules/aerospace.nix
   ];
 
   programs.atuin = {

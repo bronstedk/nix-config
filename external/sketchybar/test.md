@@ -1,0 +1,4 @@
+SENDER: workspace_move
+NAME: item_3
+FOCUSED_WORKSPACE: 3
+PREV_WORKSPACE: 2
