@@ -5,6 +5,7 @@
     enable = true;
     casks = [
       "vivaldi"
+      "font-sf-pro"
       "sf-symbols"
       "logi-options+"
     ];

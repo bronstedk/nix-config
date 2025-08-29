@@ -27,7 +27,7 @@
 
       formatters_by_ft = {
         lua = ["stylua"];
-        python = ["isort" "pyink"];
+        python = ["isort" "black"];
         go = ["gofumpt" "goimports" "golangci-lint"];
         tex = ["tex-fmt"];
         bib = ["bibtex-tidy"];

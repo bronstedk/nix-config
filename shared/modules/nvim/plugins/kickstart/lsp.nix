@@ -33,6 +33,10 @@
         enable = true;
       };
 
+      statix = {
+        enable = true;
+      };
+
       lua_ls = {
         enable = true;
 

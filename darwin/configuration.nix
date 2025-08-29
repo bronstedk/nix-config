@@ -24,7 +24,13 @@
     ]
     ++ real;
 
-  fonts.packages = [pkgs.nerd-fonts.fira-code];
+  fonts.packages = let
+    sharedFonts = import ../shared/fonts.nix {inherit pkgs;};
+  in
+    [
+      pkgs.sketchybar-app-font
+    ]
+    ++ sharedFonts;
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";

@@ -40,7 +40,7 @@
           left = 5;
           right = 5;
           bottom = 5;
-          top = [{monitor."Built-in Retina Display" = 70;} 13];
+          top = [{monitor."Built-in Retina Display" = 10;} (37 + 5)];
         };
       };
 
