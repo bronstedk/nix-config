@@ -1,8 +1,4 @@
 {...}: {
-  imports = [
-    ./sketchybar
-  ];
-
   services.jankyborders = {
     enable = true;
 
@@ -15,6 +11,9 @@
     enable = true;
 
     settings = {
+      after-startup-command = [
+        "exec-and-forget sketchybar"
+      ];
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
 
@@ -105,6 +104,7 @@
 
           alt-shift-c = [
             "reload-config"
+            "exec-and-forget killall sketchybar && sketchybar"
           ];
 
           alt-r = [

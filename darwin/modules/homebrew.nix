@@ -3,13 +3,19 @@
 
   homebrew = {
     enable = true;
+    taps = [
+      "FelixKratz/formulae"
+    ];
     casks = [
       "vivaldi"
       "font-sf-pro"
       "sf-symbols"
       "logi-options+"
     ];
-    brews = ["mas"];
+    brews = [
+      "mas"
+      "sketchybar"
+    ];
     masApps = {
       # "app_name" = "#app_id";
     };

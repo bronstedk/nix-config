@@ -17,6 +17,13 @@
     EDITOR = "nvim";
   };
 
+  home.file = lib.optionalAttrs pkgs.stdenv.isDarwin {
+    ".config/sketchybar" = {
+      source = ../darwin/modules/aerospace/sketchybar;
+      recursive = true;
+    };
+  };
+
   imports = [
     ../shared/modules/nvim
     ../shared/modules/zsh.nix
