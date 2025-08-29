@@ -36,7 +36,7 @@
         sketchybar --add item calendar right \
                    --set calendar icon=􀧞  \
                                   update_freq=20 \
-                                  label="$(date +'%a %d %b %I:%M %p')"
+                                  label="$(date +'%a %d %b %I:%M %p')" \
                                   script="${scripts.calendar}"
       '';
 
@@ -70,9 +70,17 @@
                    --subscribe front_app front_app_switched
       '';
 
-      aerospace = ''
+      spaceByMonitor = ''
         sketchybar --add event aerospace_workspace_change
 
+        sketchybar --add item space_by_monitor right \
+                   --set space_by_monitor icon.drawing=off \
+                                          label.color=${barColor}
+                                          script="${scripts.spaceByMonitor}" \
+                   --subscribe space_by_monitor aerospace_workspace_change
+      '';
+
+      aerospace = ''
         for sid in $(aerospace list-workspaces --all); do
             sketchybar --add item space.$sid left \
                 --set space.$sid \
@@ -80,7 +88,7 @@
                 label.font="sketchybar-app-font:Regular:16.0" \
                 label.padding_right=20 \
                 label.y_offset=-1 \
-                click_script="aerospace workspace $sid" \
+                click_script="aerospace workspace $sid"
         done
       '';
 
@@ -126,6 +134,7 @@
       ${volume}
       ${battery}
       ${cpu}
+      ${spaceByMonitor}
 
       sketchybar --update
     '';

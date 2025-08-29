@@ -102,7 +102,7 @@ in {
   frontApp = script {
     name = "front_app.sh";
     text = ''
-      #!/bin/sh
+      #!/bin/bash
 
       # Some events send additional information specific to the event in the $INFO
       # variable. E.g. the front_app_switched event sends the name of the newly
@@ -118,7 +118,7 @@ in {
   aerospace = script {
     name = "aerospace.sh";
     text = ''
-      #!/usr/bin/env bash
+      #!/bin/bash
 
       if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
           sketchybar --set $NAME background.drawing=on
@@ -169,6 +169,35 @@ in {
       else
         sketchybar --set $NAME drawing=off
       fi
+    '';
+  };
+
+  spaceByMonitor = script {
+    name = "space_by_monitor.sh";
+    text = ''
+      #!/bin/bash
+
+      res=""
+      monitors=$(aerospace list-monitors --format %{monitor-id})
+      curr=$(aerospace list-workspaces --focused | xargs)
+
+      i=0
+      for monitor in $monitors; do
+        ws=$(aerospace list-workspaces --monitor $monitor --visible | xargs)
+        i=$((i+1))
+
+        if [ $i -ne 1 ]; then
+          res+=" | "
+        fi
+
+        if [ "$ws" = "$curr" ]; then
+          res+="*''${ws}"
+        else
+          res+="$ws"
+        fi
+      done
+
+      sketchybar --set $NAME label="$res"
     '';
   };
 }
