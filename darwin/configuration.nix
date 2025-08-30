@@ -6,7 +6,7 @@
   # specialArgs = { inherit inputs; };
   imports = [
     ./modules/homebrew.nix
-    ./modules/aerospace
+    ./modules/aerospace/jankyborders.nix
     ./modules/system.nix
   ];
 
@@ -15,14 +15,13 @@
 
   environment.pathsToLink = ["/share/zsh"];
   environment.systemPackages = let
-    raw = import ../shared/packages.nix;
-    real = raw {inherit pkgs;};
+    rest = import ../shared/packages.nix {inherit pkgs;};
   in
     [
       pkgs.raycast
       pkgs.mkalias
     ]
-    ++ real;
+    ++ rest;
 
   fonts.packages = let
     sharedFonts = import ../shared/fonts.nix {inherit pkgs;};

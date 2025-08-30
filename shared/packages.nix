@@ -1,6 +1,8 @@
 {pkgs, ...}:
 with pkgs; [
   # jetbrains.idea-community-src
+  bitwarden
+  lua54Packages.lua
   black
   isort
   kotlin

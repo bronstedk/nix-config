@@ -1,30 +1,20 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   nixpkgs.config.allowUnfree = true;
   home.username = "bronstedk";
   home.homeDirectory = lib.mkForce "/Users/bronstedk";
   home.stateVersion = "25.05";
 
-  home.packages = [
-    pkgs.bitwarden
-    pkgs.lua
-  ];
+  #  home.packages = let
+  #    rest = import ../shared/packages.nix {inherit pkgs;};
+  #  in
+  #    rest;
 
   home.sessionVariables = {
     EDITOR = "nvim";
   };
 
-  home.file = lib.optionalAttrs pkgs.stdenv.isDarwin {
-    ".config/sketchybar" = {
-      source = ../darwin/modules/aerospace/sketchybar;
-      recursive = true;
-    };
-  };
-
   imports = [
+    ../darwin/modules/aerospace
     ../shared/modules/nvim
     ../shared/modules/zsh.nix
     ../shared/modules/oh-my-posh.nix

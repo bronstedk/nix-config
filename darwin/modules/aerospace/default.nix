@@ -1,16 +1,13 @@
-{...}: {
-  services.jankyborders = {
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  programs.aerospace = lib.mkIf pkgs.stdenv.isDarwin {
     enable = true;
+    launchd.enable = true;
 
-    active_color = "0xFFE7C664";
-    inactive_color = "transparent";
-    width = 10.0;
-  };
-
-  services.aerospace = {
-    enable = true;
-
-    settings = {
+    userSettings = {
       after-startup-command = [
         "exec-and-forget sketchybar"
       ];
