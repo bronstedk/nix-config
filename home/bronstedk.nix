@@ -22,6 +22,7 @@
     ../shared/modules/yazi.nix
     ../shared/modules/jj.nix
     ../shared/modules/gh.nix
+    ../shared/modules/fastfetch.nix
     ../secrets/gpg.nix
   ];
 

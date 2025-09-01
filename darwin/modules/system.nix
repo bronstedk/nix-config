@@ -81,7 +81,6 @@
         AppleShowAllFiles = true;
         AppleShowAllExtensions = true;
         AppleInterfaceStyle = "Dark";
-        _HIHideMenuBar = true;
       };
 
       WindowManager.AppWindowGroupingBehavior = true;

@@ -11,6 +11,7 @@
       "font-sf-pro"
       "sf-symbols"
       "logi-options+"
+      "todoist-app"
     ];
     brews = [
       "mas"

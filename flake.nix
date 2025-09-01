@@ -28,44 +28,46 @@
     nix-homebrew,
     nixvim,
     ...
-  }: {
+  }: let
+    brewDarwin = nix-homebrew.darwinModules.nix-homebrew {
+      nix-homebrew = {
+        enable = true;
+        enableRosetta = true;
+        user = "bronstedk";
+      };
+    };
+
+    homeDarwin = home-manager.darwinModules.home-manager {
+      home-manager.useUserPackages = true;
+      home-manager.users.bronstedk = {...}: {
+        imports = [
+          nixvim.homeModules.nixvim
+          ./home/bronstedk.nix
+        ];
+      };
+    };
+
+    homeNixos = home-manager.nixosModules.home-manager {
+      home-manager.useUserPackages = true;
+      home-manager.users.bronstedk = import ./home/bronstedk.nix;
+    };
+  in {
     darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
       specialArgs = {inherit self;};
       system = "aarch64-darwin";
       modules = [
         ./darwin/configuration.nix
-        nix-homebrew.darwinModules.nix-homebrew
-        {
-          nix-homebrew = {
-            enable = true;
-            enableRosetta = true;
-            user = "bronstedk";
-          };
-        }
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useUserPackages = true;
-          home-manager.users.bronstedk = {pkgs, ...}: {
-            imports = [
-              nixvim.homeModules.nixvim
-              ./home/bronstedk.nix
-            ];
-          };
-        }
+        brewDarwin
+        homeDarwin
       ];
     };
 
-    #     nixosConfigurations = {
-    # laptop = nixpkgs.lib.nixosSystem {
-    # system = "x86_64-linux";
-    #                                         modules = [
-    #                                                  ./nixos/configurations.nix
-    #                                                 home-manager.nixosModules.home-manager {
-    # home-manager.useUserPackages = true;
-    #                                                          home-manager.users.bronstedk = import ./home/bronstedk.nix;
-    #                                                 }
-    #                                         ];
-    # };
-    #     };
+    nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./nixos/configurations.nix
+        homeNixos
+      ];
+    };
   };
 }

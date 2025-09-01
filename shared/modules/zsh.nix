@@ -2,9 +2,16 @@
   programs.zsh = {
     enable = true;
 
-    initContent = lib.mkOrder 1000 ''
-      bindkey -v
-    '';
+    initContent = let
+      earlyConf = lib.mkOrder 1000 ''
+        bindkey -v
+      '';
+
+      lastConf = lib.mkOrder 1500 ''
+        fastfetch
+      '';
+    in
+      lib.mkMerge [earlyConf lastConf];
 
     enableCompletion = true;
     autosuggestion.enable = true;
@@ -21,8 +28,6 @@
       "vi" = "nvim";
       "vim" = "nvim";
     };
-
-    zprof.enable = true;
 
     oh-my-zsh = {
       enable = true;

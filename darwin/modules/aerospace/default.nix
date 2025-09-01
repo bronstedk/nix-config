@@ -8,9 +8,9 @@
     launchd.enable = true;
 
     userSettings = {
-      after-startup-command = [
-        "exec-and-forget sketchybar"
-      ];
+      #      after-startup-command = [
+      #        "exec-and-forget sketchybar"
+      #      ];
 
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
@@ -49,6 +49,18 @@
         {
           "if".app-id = "com.apple.systempreferences";
           run = ["layout tiling"];
+        }
+        {
+          "if".app-id = "com.vivaldi.Vivaldi";
+          run = ["move-node-to-workspace 1"];
+        }
+        {
+          "if".app-id = "com.todoist.mac.Todoist";
+          run = ["move-node-to-workspace 3"];
+        }
+        {
+          "if".app-id = "com.github.wez.wezterm";
+          run = ["move-node-to-workspace 2"];
         }
       ];
 
@@ -102,7 +114,7 @@
 
           alt-shift-c = [
             "reload-config"
-            "exec-and-forget killall sketchybar; sketchybar"
+            #           "exec-and-forget killall sketchybar; sketchybar"
           ];
 
           alt-r = [
