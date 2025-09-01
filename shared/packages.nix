@@ -1,6 +1,6 @@
 {pkgs, ...}:
 with pkgs; [
-  # jetbrains.idea-community-src
+  tailscale
   bitwarden
   lua54Packages.lua
   black
@@ -10,6 +10,8 @@ with pkgs; [
   kotlin-language-server
   zulu24
   jetbrains.idea-community-bin
+  gradle-completion
+  gradle_8
   neovim
   jujutsu
   git

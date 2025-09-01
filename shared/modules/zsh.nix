@@ -1,41 +1,39 @@
-{ lib, ... }: {
-	programs.zsh = {
-		enable = true;
+{lib, ...}: {
+  programs.zsh = {
+    enable = true;
 
-		initContent = lib.mkOrder 1000 ''
-			bindkey -v
+    initContent = lib.mkOrder 1000 ''
+      bindkey -v
+    '';
 
-			function y() {
-				local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-				yazi "$@" --cwd-file="$tmp"
-				IFS= read -r -d ${"''"} cwd < "$tmp"
-				[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-				rm -f -- "$tmp"
-			}
-		'';
+    enableCompletion = true;
+    autosuggestion.enable = true;
 
-		enableCompletion = true;
-		autosuggestion.enable = true;
+    syntaxHighlighting = {
+      enable = true;
+      highlighters = ["main" "brackets" "cursor" "root"];
+    };
 
-		syntaxHighlighting = {
-			enable = true;
-			highlighters = [ "main" "brackets" "cursor" "root" ];
-		};
+    shellAliases = {
+      "ll" = "eza -lha -s name --icons=always --color=always";
+      "c" = "clear";
+      "v" = "nvim";
+      "vi" = "nvim";
+      "vim" = "nvim";
+    };
 
-		shellAliases = {
-			"ll" = "eza -lha -s name --icons=always";
-			"c" = "clear";
-			"vi" = "nvim";
-			"vim" = "nvim";
-		};
+    zprof.enable = true;
 
-		oh-my-zsh = {
-			enable = true;
-			plugins = [
-				"sudo"
-				"git"
-				"command-not-found"
-			];
-		};
-	};
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "sudo"
+        "git"
+        "command-not-found"
+        "golang"
+        "gradle"
+        "tailscale"
+      ];
+    };
+  };
 }
