@@ -22,7 +22,7 @@
     };
 
     shellAliases = {
-      "ll" = "eza -lha -s name --icons=always --color=always";
+      "ll" = "eza -lha -s name";
       "cd" = "z";
       "cdi" = "zi";
       "c" = "clear";

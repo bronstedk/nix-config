@@ -1,6 +1,7 @@
 {pkgs, ...}:
 with pkgs; [
   tailscale
+  btop
   bitwarden
   lua54Packages.lua
   black
@@ -15,7 +16,6 @@ with pkgs; [
   neovim
   jujutsu
   git
-  eza
   fd
   fzf
   bat
