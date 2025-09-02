@@ -23,6 +23,8 @@
 
     shellAliases = {
       "ll" = "eza -lha -s name --icons=always --color=always";
+      "cd" = "z";
+      "cdi" = "zi";
       "c" = "clear";
       "v" = "nvim";
       "vi" = "nvim";

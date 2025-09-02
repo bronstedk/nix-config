@@ -7,17 +7,20 @@
       "FelixKratz/formulae"
     ];
     casks = [
+      "localsend"
       "vivaldi"
       "font-sf-pro"
       "sf-symbols"
       "logi-options+"
       "todoist-app"
+      "obsidian"
     ];
     brews = [
       "mas"
       "sketchybar"
     ];
     masApps = {
+      amphetamine = 937984704;
       # "app_name" = "#app_id";
     };
 

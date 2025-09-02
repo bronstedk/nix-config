@@ -3,14 +3,13 @@
   pkgs,
   ...
 }: {
-  programs.aerospace = lib.mkIf pkgs.stdenv.isDarwin {
+  services.aerospace = lib.mkIf pkgs.stdenv.isDarwin {
     enable = true;
-    launchd.enable = true;
 
-    userSettings = {
-      #      after-startup-command = [
-      #        "exec-and-forget sketchybar"
-      #      ];
+    settings = {
+      after-startup-command = [
+        "exec-and-forget sketchybar"
+      ];
 
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
