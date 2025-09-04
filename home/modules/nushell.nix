@@ -10,8 +10,13 @@
       show_banner = false;
 
       history = {
-        format = "sqlite";
+        file_format = "sqlite";
+        sync_on_enter = true;
       };
+
+      buffer_editor = "nvim";
+
+      edit_mode = "vi";
 
       completions.external = {
         enable = true;

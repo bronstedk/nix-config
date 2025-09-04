@@ -3,6 +3,7 @@
     ./system.nix
     ./homebrew.nix
     ./jankyborders.nix
-    ./aerospace
+    ./sketchybar.nix
+    ./aerospace.nix
   ];
 }

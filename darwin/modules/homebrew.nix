@@ -4,7 +4,7 @@
   homebrew = {
     enable = true;
     taps = [
-      "FelixKratz/formulae"
+      # "FelixKratz/formulae"
     ];
     casks = [
       "localsend"
@@ -17,10 +17,11 @@
     ];
     brews = [
       "mas"
-      "sketchybar"
+      # "sketchybar"
     ];
     masApps = {
       amphetamine = 937984704;
+      "microsoft-word" = 462054704;
       # "app_name" = "#app_id";
     };
 
