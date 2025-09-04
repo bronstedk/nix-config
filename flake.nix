@@ -18,6 +18,13 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs = {
@@ -28,7 +35,7 @@
     nix-homebrew,
     nixvim,
     ...
-  }: {
+  }@inputs: {
     darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
       specialArgs = {inherit self;};
       system = "aarch64-darwin";
@@ -58,20 +65,21 @@
     };
 
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
       system = "x86_64-linux";
       modules = [
-        ./nixos/configurations.nix
+        ./nixos/configuration.nix
 
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useUserPackages = true;
-          home-manager.users.bronstedk = {...}: {
-            imports = [
-              nixvim.homeModules.nixvim
-              ./home/bronstedk.nix
-            ];
-          };
-        }
+         home-manager.nixosModules.home-manager
+         {
+           home-manager.useUserPackages = true;
+           home-manager.users.bronstedk = {...}: {
+             imports = [
+               nixvim.homeModules.nixvim
+               ./home/bronstedk.nix
+             ];
+           };
+         }
       ];
     };
   };

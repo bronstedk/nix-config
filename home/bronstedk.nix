@@ -1,7 +1,7 @@
-{lib, ...}: {
+{lib, pkgs, ...}: {
   nixpkgs.config.allowUnfree = true;
   home.username = "bronstedk";
-  home.homeDirectory = lib.mkForce "/Users/bronstedk";
+  home.homeDirectory =let home = if pkgs.stdenv.isDarwin then "/Users/bronstedk" else "/home/bronstedk"; in lib.mkForce home;
   home.stateVersion = "25.05";
 
   #  home.packages = let
@@ -15,6 +15,7 @@
 
   imports = [
     ./modules
+    ../nixos/modules/hyprland.nix
     ../secrets/gpg.nix
   ];
 

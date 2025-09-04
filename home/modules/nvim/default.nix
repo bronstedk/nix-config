@@ -10,11 +10,11 @@
       ./plugins
     ];
 
-    colorschemes.catppuccin = {
-      enable = true;
+     colorschemes.catppuccin = {
+       enable = true;
 
-      settings.flavour = "mocha";
-    };
+       settings.flavour = "mocha";
+     };
 
     plugins = {
       lualine.enable = true;

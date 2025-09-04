@@ -4,6 +4,7 @@
 
     initContent = let
       earlyConf = lib.mkOrder 1000 ''
+	export EDITOR="nvim"
         bindkey -v
       '';
 
@@ -15,6 +16,9 @@
 
     enableCompletion = true;
     autosuggestion.enable = true;
+	sessionVariables = {
+		EDITOR = "nvim";
+	};
 
     syntaxHighlighting = {
       enable = true;
