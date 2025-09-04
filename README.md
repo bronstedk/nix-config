@@ -10,10 +10,10 @@ This setup provides a unified and reproducible environment across platforms.
 
 ## Requirements
 
-* [Nix](https://nixos.org/download.html) installed
+* [Nix](https://nixos.org/download) installed
 * For macOS:
 
-  * [nix-darwin](https://github.com/LnL7/nix-darwin)
+  * [nix-darwin](https://github.com/nix-darwin/nix-darwin)
 
 ## Installation
 
