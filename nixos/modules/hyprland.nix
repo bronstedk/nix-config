@@ -27,15 +27,21 @@
 
       bind = [
 	"$mod, space, exec, rofi -show drun -show-icons"
-	"$mod, T, exec, alacritty"
+	"$mod, return, exec, alacritty"
 	"$mod, W, killactive,"
 	"$mod, M, exit,"
-	"$mod, F, exec, dolphin"
+	"$mod, F, exec, nautilus"
+	"$mod, B, exec, vivaldi"
 
 	"$mod, H, movefocus, l"
 	"$mod, L, movefocus, r"
 	"$mod, J, movefocus, d"
 	"$mod, K, movefocus, u"
+
+	"$mod, 1, workspace, 1"
+	"$mod, 2, workspace, 2"
+	"$mod, 3, workspace, 3"
+	"$mod, 4, workspace, 4"
       ];
     };
   };
