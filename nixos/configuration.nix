@@ -97,11 +97,13 @@
   )
 
   waybar
-  dunst
   libnotify
   swww
   rofi-wayland
   wl-clipboard
+  hyprshot
+  swaynotificationcenter
+  playerctl
 
   vivaldi
 
