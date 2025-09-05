@@ -63,7 +63,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = let
       rest = import ../shared/packages.nix {inherit pkgs;};
-    in rest;
+    in with pkgs; [libreoffice] ++ rest;
   };
 
   fonts.packages = let 
@@ -76,6 +76,7 @@
 
     xwayland.enable = true;
   };
+
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -89,23 +90,27 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  (waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-    })
-  )
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    (waybar.overrideAttrs (oldAttrs: {
+	mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+      })
+    )
 
-  waybar
-  libnotify
-  swww
-  rofi-wayland
-  wl-clipboard
-  hyprshot
-  swaynotificationcenter
-  playerctl
+    waybar
+    libnotify
+    swww
+    rofi-wayland
+    wl-clipboard
+    hyprshot
+    swaynotificationcenter
+    playerctl
 
-  vivaldi
+    vivaldi
+
+    exfat
+    btrfs-progs
+    rsync
 
     git
     neovim

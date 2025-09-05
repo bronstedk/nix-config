@@ -26,9 +26,6 @@
     "temperature"
     "backlight"
     "keyboard-state"
-    "sway/language"
-    "battery"
-    "battery#bat2"
     "clock"
     "tray"
     "custom/power"
@@ -56,21 +53,6 @@
       locked = "";
       unlocked = "";
     };
-  };
-
-  "sway/mode" = {
-    format = "<span style=\"italic\">{}</span>";
-  };
-
-  "sway/scratchpad" = {
-    format = "{icon} {count}";
-    show-empty = false;
-    format-icons = [
-      ""
-      ""
-    ];
-    tooltip = true;
-    tooltip-format = "{app}: {title}";
   };
 
   mpd = {
@@ -118,6 +100,7 @@
 
   clock = {
     timezone = "America/New_York";
+    format = "{:%I:%M %p}";
     tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
     format-alt = "{:%Y-%m-%d}";
   };
@@ -154,30 +137,6 @@
       ""
       ""
     ];
-  };
-
-  battery = {
-    states = {
-      good = 80;
-      warning = 30;
-      critical = 15;
-    };
-    format = "{capacity}% {icon}";
-    format-full = "{capacity}% {icon}";
-    format-charging = "{capacity}% ";
-    format-plugged = "{capacity}% ";
-    format-alt = "{time} {icon}";
-    format-icons = [
-      ""
-      ""
-      ""
-      ""
-      ""
-    ];
-  };
-
-  "battery#bat2" = {
-    bat = "BAT2";
   };
 
   power-profiles-daemon = {

@@ -28,11 +28,6 @@
 	border_size = 5;
       };
 
-      decoration = {
-	active_opacity = 1.0;
-	inactive_opacity = 0.5;
-      };
-
       input = {
 	kb_layout = "us";
       };
@@ -80,6 +75,49 @@
 	'', XF86AudioPause, exec, playerctl play-pause''
 	'', XF86AudioPlay, exec, playerctl play-pause''
 	'', XF86AudioPrev, exec, playerctl previous''
+      ];
+
+      windowrule = [
+	"suppressevent maximize, class:.*"
+      ];
+    };
+  };
+
+  programs.hyprlock = {
+    enable = true;
+
+    settings = {
+      background = [
+	{
+	    color = "rgba(25, 20, 20, 1.0)";
+	    blur_passes = 0;
+	    blur_size = 7;
+	    noise = 0.0117;
+	    contrast = 0.8916;
+	    brightness = 0.8172;
+	    vibrancy = 0.1696;
+	    vibracy_darkness = 0.0;
+	}
+      ];
+
+      input-field = [
+	{
+	  size = "20%, 5%";
+	  outline_thickness = 3;
+	  inner_color = "rgba(0, 0, 0, 0.0)"; # no fill
+
+	  outer_color = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+	  check_color = "rgba(00ff99ee) rgba(ff6633ee) 120deg";
+	  fail_color="rgba(ff6633ee) rgba(ff0066ee) 40deg";
+
+	  font_color = "rgb(143, 143, 143)";
+	  fade_on_empty = false;
+	  rounding = 15;
+
+	  position = "0, -20";
+	  halign = "center";
+	  valign = "center";
+	}
       ];
     };
   };
