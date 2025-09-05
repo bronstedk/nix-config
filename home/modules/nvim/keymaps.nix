@@ -1,5 +1,17 @@
-{...}: {
+{pkgs, ...}: {
   keymaps = [
+  {
+    mode = ["n" "v"];
+    key = "<C-c>";
+    action = if pkgs.stdenv.isLinux then ''"+y'' else ''"*y'';
+  }
+
+  {
+    mode = ["n" "v"];
+    key = "<C-p>";
+action = if pkgs.stdenv.isLinux then ''"+p'' else ''"*p'';
+  }
+
     {
       mode = "n";
       key = "<Esc>";

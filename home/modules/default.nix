@@ -1,7 +1,8 @@
 {...}: {
   imports = [
     ./nvim
-
+    
+    ./alacritty.nix
     ./atuin.nix
     ./eza.nix
     ./fastfetch.nix
@@ -10,7 +11,6 @@
     ./nushell.nix
     ./oh-my-posh.nix
     ./uv.nix
-    ./wezterm.nix
     ./yazi.nix
     ./zoxide.nix
     ./zsh.nix

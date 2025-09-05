@@ -16,9 +16,6 @@
 
     enableCompletion = true;
     autosuggestion.enable = true;
-	sessionVariables = {
-		EDITOR = "nvim";
-	};
 
     syntaxHighlighting = {
       enable = true;

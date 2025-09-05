@@ -101,6 +101,7 @@
   libnotify
   swww
   rofi-wayland
+  wl-clipboard
 
   vivaldi
 

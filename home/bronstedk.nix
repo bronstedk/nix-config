@@ -16,6 +16,7 @@
   imports = [
     ./modules
     ../nixos/modules/hyprland.nix
+    ../nixos/modules/waybar.nix
     ../secrets/gpg.nix
   ];
 

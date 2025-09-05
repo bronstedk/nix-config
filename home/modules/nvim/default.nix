@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   programs.nixvim = {
     enable = true;
 
@@ -15,6 +15,8 @@
 
        settings.flavour = "mocha";
      };
+
+     clipboard.providers.wl-copy.enable = lib.mkIf pkgs.stdenv.isLinux true;
 
     plugins = {
       lualine.enable = true;

@@ -27,7 +27,7 @@
 
       bind = [
 	"$mod, space, exec, rofi -show drun -show-icons"
-	"$mod, T, exec, wezterm"
+	"$mod, T, exec, alacritty"
 	"$mod, W, killactive,"
 	"$mod, M, exit,"
 	"$mod, F, exec, dolphin"
