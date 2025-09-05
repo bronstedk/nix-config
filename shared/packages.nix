@@ -1,5 +1,8 @@
 {pkgs, ...}:
 with pkgs; [
+  cowsay
+  lolcat
+  hello
   tailscale
   btop
   bitwarden

@@ -14,6 +14,7 @@
       "logi-options+"
       "todoist-app"
       "obsidian"
+      "balenaetcher"
     ];
     brews = [
       "mas"

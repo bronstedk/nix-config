@@ -6,7 +6,9 @@
   services.aerospace = lib.mkIf pkgs.stdenv.isDarwin {
     enable = true;
 
-    settings = {
+    settings = let
+      path = ''export PATH="$PATH:/run/current-system/sw/bin";'';
+    in {
       after-startup-command = [
         # "exec-and-forget sketchybar"
       ];
@@ -19,9 +21,9 @@
 
       on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
       exec-on-workspace-change = [
-        "/bin/bash"
+        "/bin/zsh"
         "-c"
-        "sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE"
+        "${path} sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE"
       ];
 
       automatically-unhide-macos-hidden-apps = false;
@@ -45,6 +47,8 @@
 
       workspace-to-monitor-force-assignment = {
         "1" = ["KA242Y E" "secondary"];
+        "4" = ["Built-in Retina Display" "main"];
+        "5" = ["KA242Y E" "secondary"];
       };
 
       on-window-detected = [
@@ -97,23 +101,23 @@
 
           alt-shift-1 = [
             "move-node-to-workspace 1"
-            "exec-and-forget sketchybar --trigger workspace_move PREV_WORKSPACE=1"
+            "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=1"
           ];
           alt-shift-2 = [
             "move-node-to-workspace 2"
-            "exec-and-forget sketchybar --trigger workspace_move PREV_WORKSPACE=2"
+            "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=2"
           ];
           alt-shift-3 = [
             "move-node-to-workspace 3"
-            "exec-and-forget sketchybar --trigger workspace_move PREV_WORKSPACE=3"
+            "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=3"
           ];
           alt-shift-4 = [
             "move-node-to-workspace 4"
-            "exec-and-forget sketchybar --trigger workspace_move PREV_WORKSPACE=4"
+            "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=4"
           ];
           alt-shift-5 = [
             "move-node-to-workspace 5"
-            "exec-and-forget sketchybar --trigger workspace_move PREV_WORKSPACE=5"
+            "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=5"
           ];
 
           alt-tab = "workspace-back-and-forth";
@@ -121,17 +125,17 @@
 
           alt-shift-semicolon = [
             "mode service"
-            "exec-and-forget sketchybar --trigger change_mode MODE=service"
+            "exec-and-forget ${path} sketchybar --trigger change_mode MODE=service"
           ];
 
           alt-shift-c = [
             "reload-config"
-            # "exec-and-forget killall sketchybar; sketchybar"
+            "exec-and-forget ${path} sketchybar --reload"
           ];
 
           alt-r = [
             "mode resize"
-            "exec-and-forget sketchybar --trigger change_mode MODE=resize"
+            "exec-and-forget ${path} sketchybar --trigger change_mode MODE=resize"
           ];
         };
 
@@ -143,45 +147,45 @@
           b = [
             "balance-sizes"
             "mode main"
-            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+            "exec-and-forget ${path} sketchybar --trigger change_mode MODE=main"
           ];
 
           enter = [
             "mode main"
-            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+            "exec-and-forget ${path} sketchybar --trigger change_mode MODE=main"
           ];
         };
 
         service.binding = {
           enter = [
             "mode main"
-            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+            "exec-and-forget ${path} sketchybar --trigger change_mode MODE=main"
           ];
           r = [
             "flatten-workspace-tree"
             "mode main"
-            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+            "exec-and-forget ${path} sketchybar --trigger change_mode MODE=main"
           ];
 
           alt-shift-h = [
             "join-with left"
             "mode main"
-            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+            "exec-and-forget ${path} sketchybar --trigger change_mode MODE=main"
           ];
           alt-shift-j = [
             "join-with down"
             "mode main"
-            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+            "exec-and-forget ${path} sketchybar --trigger change_mode MODE=main"
           ];
           alt-shift-k = [
             "join-with up"
             "mode main"
-            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+            "exec-and-forget ${path} sketchybar --trigger change_mode MODE=main"
           ];
           alt-shift-l = [
             "join-with right"
             "mode main"
-            "exec-and-forget sketchybar --trigger change_mode MODE=main"
+            "exec-and-forget ${path} sketchybar --trigger change_mode MODE=main"
           ];
         };
       };
