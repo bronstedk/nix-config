@@ -47,8 +47,8 @@
 
       workspace-to-monitor-force-assignment = {
         "1" = ["KA242Y E" "secondary"];
-        "4" = ["Built-in Retina Display" "main"];
-        "5" = ["KA242Y E" "secondary"];
+        "9" = ["Built-in Retina Display" "main"];
+        "10" = ["KA242Y E" "secondary"];
       };
 
       on-window-detected = [
@@ -98,6 +98,11 @@
           alt-3 = "workspace 3";
           alt-4 = "workspace 4";
           alt-5 = "workspace 5";
+          alt-1 = "workspace 6";
+          alt-2 = "workspace 7";
+          alt-3 = "workspace 8";
+          alt-4 = "workspace 9";
+          alt-5 = "workspace 10";
 
           alt-shift-1 = [
             "move-node-to-workspace 1"
@@ -118,6 +123,26 @@
           alt-shift-5 = [
             "move-node-to-workspace 5"
             "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=5"
+          ];
+          alt-shift-6 = [
+            "move-node-to-workspace 6"
+            "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=6"
+          ];
+          alt-shift-7 = [
+            "move-node-to-workspace 7"
+            "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=7"
+          ];
+          alt-shift-8 = [
+            "move-node-to-workspace 8"
+            "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=8"
+          ];
+          alt-shift-9 = [
+            "move-node-to-workspace 9"
+            "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=9"
+          ];
+          alt-shift-10 = [
+            "move-node-to-workspace 10"
+            "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=10"
           ];
 
           alt-tab = "workspace-back-and-forth";
