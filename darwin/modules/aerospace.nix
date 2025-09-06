@@ -98,11 +98,11 @@
           alt-3 = "workspace 3";
           alt-4 = "workspace 4";
           alt-5 = "workspace 5";
-          alt-1 = "workspace 6";
-          alt-2 = "workspace 7";
-          alt-3 = "workspace 8";
-          alt-4 = "workspace 9";
-          alt-5 = "workspace 10";
+          alt-6 = "workspace 6";
+          alt-7 = "workspace 7";
+          alt-8 = "workspace 8";
+          alt-9 = "workspace 9";
+          alt-0 = "workspace 10";
 
           alt-shift-1 = [
             "move-node-to-workspace 1"
@@ -140,7 +140,7 @@
             "move-node-to-workspace 9"
             "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=9"
           ];
-          alt-shift-10 = [
+          alt-shift-0 = [
             "move-node-to-workspace 10"
             "exec-and-forget ${path} sketchybar --trigger workspace_move PREV_WORKSPACE=10"
           ];
