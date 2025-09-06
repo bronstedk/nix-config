@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./nvim
-    
+
     ./alacritty.nix
     ./atuin.nix
     ./eza.nix

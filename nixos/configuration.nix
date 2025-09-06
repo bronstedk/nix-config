@@ -1,9 +1,13 @@
-{ config, pkgs, inputs, ... }:
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -49,28 +53,41 @@
   };
 
   services.displayManager.gdm.enable = true;
-    services.desktopManager.gnome.enable =true;
+  services.desktopManager.gnome.enable = true;
+
+  services.tailscale.enable = true;
+
+  programs.gpaste.enable = true;
 
   services.printing.enable = true;
 
   hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  hardware.enableRedistributableFirmware = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.bronstedk = {
     isNormalUser = true;
     description = "bronstedk";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = let
       rest = import ../shared/packages.nix {inherit pkgs;};
-    in with pkgs; [libreoffice] ++ rest;
+    in
+      with pkgs;
+        [
+          libreoffice
+        ]
+        ++ rest;
   };
 
-  fonts.packages = let 
-    fonts = import ../shared/fonts.nix { inherit pkgs; };
-  in [pkgs.font-awesome] ++ fonts;
+  fonts.packages = let
+    fonts = import ../shared/fonts.nix {inherit pkgs;};
+  in
+    [pkgs.font-awesome] ++ fonts;
 
-  programs.hyprland = { 
+  programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
@@ -79,7 +96,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
   programs.zsh.enable = true;
@@ -92,8 +109,9 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-    (waybar.overrideAttrs (oldAttrs: {
-	mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+    (
+      waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
       })
     )
 
@@ -104,6 +122,7 @@
     hyprshot
     swaynotificationcenter
     playerctl
+    pavucontrol
 
     vivaldi
 
@@ -119,9 +138,9 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-   programs.gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
   };
 
   # List services that you want to enable:
@@ -136,5 +155,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }

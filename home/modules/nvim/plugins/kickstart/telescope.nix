@@ -1,4 +1,4 @@
-{ ...}: {
+{...}: {
   plugins.telescope = {
     enable = true;
 
@@ -8,7 +8,7 @@
     };
 
     keymaps = {
-            "<leader>sh" = {
+      "<leader>sh" = {
         mode = "n";
         action = "help_tags";
         options = {

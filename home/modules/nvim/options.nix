@@ -1,44 +1,43 @@
-{ ... }: {
-           globals = {
-            maplocalleader = " ";
-            mapleader = " ";
-            have_nerd_font = true;
-          };
+{...}: {
+  globals = {
+    maplocalleader = " ";
+    mapleader = " ";
+    have_nerd_font = true;
+  };
 
-          opts = {
-          number = true;
-          relativenumber = true;
+  opts = {
+    number = true;
+    relativenumber = true;
 
-          mouse = "a";
+    mouse = "a";
 
-          showmode = false;
+    showmode = false;
 
-          undofile = true;
+    undofile = true;
 
-          ignorecase = true;
-          smartcase = true;
+    ignorecase = true;
+    smartcase = true;
 
-          signcolumn = "yes";
+    signcolumn = "yes";
 
-          updatetime = 250;
+    updatetime = 250;
 
-          timeoutlen = 300;
+    timeoutlen = 300;
 
-          splitright = true;
-          splitbelow = true;
+    splitright = true;
+    splitbelow = true;
 
-          list = true;
-          listchars.__raw = "{ tab = '» ', trail = '.', nbsp = '␣'}";
+    list = true;
+    listchars.__raw = "{ tab = '» ', trail = '.', nbsp = '␣'}";
 
-          inccommand = "split";
+    inccommand = "split";
 
-          cursorline = true;
+    cursorline = true;
 
-          scrolloff = 10;
+    scrolloff = 10;
 
-          hlsearch = true;
+    hlsearch = true;
 
-          shiftwidth = 2;
-          };
- 
+    shiftwidth = 2;
+  };
 }

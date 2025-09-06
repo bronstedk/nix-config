@@ -4,8 +4,8 @@
 
     initContent = let
       earlyConf = lib.mkOrder 1000 ''
-	export EDITOR="nvim"
-        bindkey -v
+        export EDITOR="nvim"
+               bindkey -v
       '';
 
       lastConf = lib.mkOrder 1500 ''

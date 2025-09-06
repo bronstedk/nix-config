@@ -35,7 +35,7 @@
     nix-homebrew,
     nixvim,
     ...
-  }@inputs: {
+  } @ inputs: {
     darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
       specialArgs = {inherit self;};
       system = "aarch64-darwin";
@@ -65,21 +65,21 @@
     };
 
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
       system = "x86_64-linux";
       modules = [
         ./nixos/configuration.nix
 
-         home-manager.nixosModules.home-manager
-         {
-           home-manager.useUserPackages = true;
-           home-manager.users.bronstedk = {...}: {
-             imports = [
-               nixvim.homeModules.nixvim
-               ./home/bronstedk.nix
-             ];
-           };
-         }
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useUserPackages = true;
+          home-manager.users.bronstedk = {...}: {
+            imports = [
+              nixvim.homeModules.nixvim
+              ./home/bronstedk.nix
+            ];
+          };
+        }
       ];
     };
   };

@@ -7,14 +7,18 @@
 
   autoCmd = [
     {
-      event = [ "TextYankPost" ];
+      event = ["TextYankPost"];
       desc = "Highlight when yanking (copying) text";
       group = "kickstart-highlight-yank";
-      callback.__raw = /* lua */ ''
-        function()
-          vim.hl.on_yank()
-        end
-      '';
+      callback.__raw =
+        /*
+        lua
+        */
+        ''
+          function()
+            vim.hl.on_yank()
+          end
+        '';
     }
   ];
 }

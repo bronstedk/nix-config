@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   plugins.luasnip.enable = true;
 
   plugins.blink-cmp = {
