@@ -99,7 +99,6 @@
 
     waybar
     libnotify
-    swww
     rofi-wayland
     wl-clipboard
     hyprshot

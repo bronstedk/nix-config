@@ -1,18 +1,22 @@
-{lib, pkgs, ...}:{
-  wayland.windowManager.hyprland = lib.mkIf pkgs.stdenv.isLinux {
+{lib, pkgs, ...}: let
+    sysCheck = lib.mkIf pkgs.stdenv.isLinux;
+in {
+  wayland.windowManager.hyprland = sysCheck {
     enable = true;
 
     extraConfig =let
       startFile = pkgs.writeShellScript "start.sh" ''
 	#!${pkgs.bash}/bin/bash
 
-	swww init &
-
-	# swww img $wallpaper_path &
+	hyprpaper &
 
 	nm-applet --indicator &
 
 	waybar &
+
+	hypridle &
+
+	hyprpaper &
 
 	swaync
       '';
@@ -70,6 +74,8 @@
 
 	"SUPER + SHIFT, 3, exec, hyprshot -m window"
 	"SUPER + SHIFT, 4, exec, hyprshot -m region"
+
+	"SUPER + SHIFT, l, exec, hyprlock"
       ];
 
       bindm = [
@@ -95,7 +101,7 @@
     };
   };
 
-  programs.hyprlock = {
+  programs.hyprlock = sysCheck {
     enable = true;
 
     settings = {
@@ -131,6 +137,34 @@
 	  valign = "center";
 	}
       ];
+    };
+  };
+
+  services.hypridle = sysCheck {
+    enable = true;
+
+    settings = {
+      general = {
+	lock_cmd = ''pidof hyprlock || hyprlock'';
+      };
+
+      listener = [
+	{
+	  timeout = 300;
+	  on-timeout = ''loginctl lock-session'';
+	}
+      ];
+    };
+  };
+
+  services.hyprpaper = sysCheck {
+    enable = true;
+
+    settings = let
+      wall = ''${../../shared/wallpapers/shaded.png}'';
+    in {
+      preload = wall;
+      wallpaper = '', ${wall}'';
     };
   };
 }
