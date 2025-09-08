@@ -22,6 +22,10 @@
       highlighters = ["main" "brackets" "cursor" "root"];
     };
 
+    sessionVariables = {
+      XDG_CONFIG_HOME = "$HOME/.config";
+    };
+
     shellAliases = {
       "ll" = "eza -lha -s name";
       "cd" = "z";
