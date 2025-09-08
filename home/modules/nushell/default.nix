@@ -19,6 +19,7 @@
     };
 
     configFile.text = ''
+      source ${./catppuccin_mocha.nu}
       alias ls-builtin = ls;
 
       def ls [

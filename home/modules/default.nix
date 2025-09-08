@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./nushell
     ./nvim
 
     ./alacritty.nix
@@ -9,7 +10,6 @@
     ./gh.nix
     ./gpg.nix
     ./jj.nix
-    ./nushell.nix
     ./oh-my-posh.nix
     ./uv.nix
     ./yazi.nix
