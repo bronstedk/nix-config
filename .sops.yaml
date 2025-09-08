@@ -9,7 +9,7 @@ creation_rules:
       - *nixos
       - *macos
 
-  - path_regex: secrets/config.toml$
+  - path_regex: secrets/jj_config.toml$
     encrypted_regex: ".*"
     key_groups:
     - age:
