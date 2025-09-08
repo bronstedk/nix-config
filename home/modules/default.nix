@@ -11,7 +11,6 @@
     ./jj.nix
     ./nushell.nix
     ./oh-my-posh.nix
-    ./ssh.nix
     ./uv.nix
     ./yazi.nix
     ./zoxide.nix
