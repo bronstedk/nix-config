@@ -134,6 +134,7 @@
     rsync
 
     git
+    pinentry-all
   ];
 
   # List services that you want to enable:

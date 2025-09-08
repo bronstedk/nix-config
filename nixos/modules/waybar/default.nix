@@ -103,7 +103,7 @@
 
       clock = {
         timezone = "America/New_York";
-        format = "{:%I:%M %p}";
+        format = "{:%I:%M %p - %a %m/%d/%Y}";
         tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         format-alt = "{:%Y-%m-%d}";
       };
