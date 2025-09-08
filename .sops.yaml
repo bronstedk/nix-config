@@ -1,14 +1,17 @@
 keys:
-  - &primary age14ptktm2usy59ha367j2yyh5rm0r7jezysk6jcae0vnnr82frs99s937vdr
+  - &nixos age14ptktm2usy59ha367j2yyh5rm0r7jezysk6jcae0vnnr82frs99s937vdr
+  - &macos age155acjdvr78pa82vx3mqcqud96cav783k5xjr6va4nwv9cufzlgnq8sjlw3
 
 creation_rules:
   - path_regex: secrets/secrets.ya?ml$
     key_groups:
     - age:
-      - *primary
+      - *nixos
+      - *macos
 
   - path_regex: secrets/config.toml$
     encrypted_regex: ".*"
     key_groups:
     - age:
-      - *primary
+      - *nixos
+      - *macos
