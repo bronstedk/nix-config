@@ -73,7 +73,7 @@
   users.users.bronstedk = {
     isNormalUser = true;
     description = "bronstedk";
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
     extraGroups = ["networkmanager" "wheel"];
     packages = let
       rest = import ../shared/packages.nix {inherit pkgs;};
