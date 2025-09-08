@@ -7,9 +7,11 @@
     ./eza.nix
     ./fastfetch.nix
     ./gh.nix
+    ./gpg.nix
     ./jj.nix
     ./nushell.nix
     ./oh-my-posh.nix
+    ./ssh.nix
     ./uv.nix
     ./yazi.nix
     ./zoxide.nix

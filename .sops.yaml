@@ -1,0 +1,14 @@
+keys:
+  - &primary age14ptktm2usy59ha367j2yyh5rm0r7jezysk6jcae0vnnr82frs99s937vdr
+
+creation_rules:
+  - path_regex: secrets/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *primary
+
+  - path_regex: secrets/config.toml$
+    encrypted_regex: ".*"
+    key_groups:
+    - age:
+      - *primary

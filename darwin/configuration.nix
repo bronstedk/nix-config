@@ -5,6 +5,7 @@
 }: {
   # specialArgs = { inherit inputs; };
   imports = [
+    ../shared/modules/sops.nix
     ./modules
   ];
 

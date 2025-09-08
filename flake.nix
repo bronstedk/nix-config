@@ -25,6 +25,11 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -34,6 +39,7 @@
     home-manager,
     nix-homebrew,
     nixvim,
+    sops-nix,
     ...
   } @ inputs: {
     darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
@@ -50,6 +56,8 @@
             user = "bronstedk";
           };
         }
+
+        sops-nix.darwinModules.sops
 
         home-manager.darwinModules.home-manager
         {
@@ -69,6 +77,8 @@
       system = "x86_64-linux";
       modules = [
         ./nixos/configuration.nix
+
+        sops-nix.nixosModules.sops
 
         home-manager.nixosModules.home-manager
         {

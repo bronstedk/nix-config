@@ -3,6 +3,8 @@
   lib,
   ...
 }: {
+  programs.neovim.enable = true;
+
   programs.nixvim = {
     enable = true;
 

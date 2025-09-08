@@ -1,5 +1,6 @@
 {pkgs, ...}:
 with pkgs; [
+  sops
   cowsay
   lolcat
   hello

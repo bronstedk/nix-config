@@ -27,7 +27,6 @@
     ./modules
     ../nixos/modules/hyprland.nix
     ../nixos/modules/waybar
-    ../secrets/gpg.nix
   ];
 
   programs.home-manager.enable = true;
