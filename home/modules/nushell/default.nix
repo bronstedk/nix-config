@@ -26,10 +26,10 @@
            $env.__NIX_DARWIN_SET_ENVIRONMENT_DONE = 1
 
            $env.PATH = $env.PATH ++ [
-	      $"($env.HOME)/.nix-profile/bin"
-	      $"/etc/profiles/per-user/($env.USER)/bin"
-	      "/run/current-system/sw/bin"
-	      "/nix/var/nix/profiles/default/bin"
+      $"($env.HOME)/.nix-profile/bin"
+      $"/etc/profiles/per-user/($env.USER)/bin"
+      "/run/current-system/sw/bin"
+      "/nix/var/nix/profiles/default/bin"
            ]
 
            $env.NIX_PATH = "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels"
