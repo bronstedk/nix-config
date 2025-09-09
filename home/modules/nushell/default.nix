@@ -1,4 +1,8 @@
-{...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs.nushell = {
     enable = true;
 
@@ -18,8 +22,33 @@
       EDITOR = "nvim";
     };
 
+    loginFile.text = lib.mkIf pkgs.stdenv.isDarwin ''
+           $env.__NIX_DARWIN_SET_ENVIRONMENT_DONE = 1
+
+           $env.PATH = $env.PATH ++ [
+	      $"($env.HOME)/.nix-profile/bin"
+	      $"/etc/profiles/per-user/($env.USER)/bin"
+	      "/run/current-system/sw/bin"
+	      "/nix/var/nix/profiles/default/bin"
+           ]
+
+           $env.NIX_PATH = "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels"
+           $env.NIX_SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt"
+           $env.PAGER = "less -R"
+           $env.TERMINFO_DIRS = $"($env.HOME)/.nix-profile/share/terminfo:/etc/profiles/per-user/($env.USER)/share/terminfo:/run/current-system/sw/share/terminfo:/nix/var/nix/profiles/default/share/terminfo:/usr/share/terminfo"
+           $env.XDG_CONFIG_DIRS = $"($env.HOME)/.nix-profile/etc/xdg:/etc/profiles/per-user/($env.USER)/etc/xdg:/run/current-system/sw/etc/xdg:/nix/var/nix/profiles/default/etc/xdg"
+           $env.XDG_DATA_DIRS = $"($env.HOME)/.nix-profile/share:/etc/profiles/per-user/($env.USER)/share:/run/current-system/sw/share:/nix/var/nix/profiles/default/share"
+
+           # Extra initialisation
+           $env.NIX_USER_PROFILE_DIR = "/nix/var/nix/profiles/per-user/($env.USER)"
+           $env.NIX_PROFILES = "/nix/var/nix/profiles/default /run/current-system/sw /etc/profiles/per-user/($env.USER) ($env.HOME)/.nix-profile"
+
+           if ($"($env.HOME)/.nix-defexpr/channels" | path exists) { $env.NIX_PATH = $"($env.HOME)/.nix-defexpr/channels:" + $env.NIX_PATH }
+    '';
+
     configFile.text = ''
       source ${./catppuccin_mocha.nu}
+
       alias ls-builtin = ls;
 
       def ls [
