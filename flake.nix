@@ -30,6 +30,8 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
@@ -40,6 +42,7 @@
     nix-homebrew,
     nixvim,
     sops-nix,
+    stylix,
     ...
   } @ inputs: {
     darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
@@ -58,6 +61,8 @@
         }
 
         sops-nix.darwinModules.sops
+
+        stylix.darwinModules.stylix
 
         home-manager.darwinModules.home-manager
         {
@@ -79,6 +84,8 @@
         ./nixos/configuration.nix
 
         sops-nix.nixosModules.sops
+
+        stylix.nixosModules.stylix
 
         home-manager.nixosModules.home-manager
         {

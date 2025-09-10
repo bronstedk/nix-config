@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   inputs,
   ...
@@ -8,6 +7,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../shared/modules/sops.nix
+    ../shared/modules/stylix.nix
   ];
 
   # Bootloader.

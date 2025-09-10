@@ -12,6 +12,7 @@
     ./jj.nix
     ./oh-my-posh.nix
     ./uv.nix
+    ./vscode.nix
     ./yazi.nix
     ./zoxide.nix
     ./zsh.nix

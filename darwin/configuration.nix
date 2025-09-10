@@ -6,6 +6,7 @@
   # specialArgs = { inherit inputs; };
   imports = [
     ../shared/modules/sops.nix
+    ../shared/modules/stylix.nix
     ./modules
   ];
 

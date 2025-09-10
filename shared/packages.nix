@@ -13,6 +13,7 @@ with pkgs; [
   kotlin
   kotlin-native
   kotlin-language-server
+  nixd
   zulu24
   jetbrains.idea-community-bin
   gradle-completion
@@ -25,4 +26,7 @@ with pkgs; [
   bat
   ripgrep
   alejandra
+  tldr
+  mypy
+  topiary
 ]
