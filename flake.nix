@@ -62,13 +62,12 @@
 
         sops-nix.darwinModules.sops
 
-        stylix.darwinModules.stylix
-
         home-manager.darwinModules.home-manager
         {
           home-manager.useUserPackages = true;
           home-manager.users.bronstedk = {...}: {
             imports = [
+              stylix.homeModules.stylix
               nixvim.homeModules.nixvim
               ./home/bronstedk.nix
             ];

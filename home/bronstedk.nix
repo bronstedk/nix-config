@@ -24,6 +24,7 @@
   };
 
   imports = [
+    ../shared/modules/stylix.nix
     ./modules
     ../nixos/modules/hyprland.nix
     ../nixos/modules/waybar
